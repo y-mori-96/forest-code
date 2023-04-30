@@ -12,7 +12,7 @@
             <?php if(has_post_thumbnail()): ?>
                 <?php the_post_thumbnail('medium'); ?>
             <?php else: ?>
-                <img src="<?php echo esc_url(get_theme_file_uri('/images/ph.png')); ?>" alt="" class="wp-post-image">
+                <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/ph.png')); ?>" alt="" class="wp-post-image">
             <?php endif; ?>
             </a>
             <header class="post-header">

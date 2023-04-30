@@ -68,7 +68,7 @@ HEADER
 ================================================ */
 .site-header {
     height: 130px;
-    background: url(images/header.jpg) center/cover;
+    background: url(assets/images/header.jpg) center/cover;
     padding-top: 1rem;
     margin-bottom: 1rem;
     -webkit-clip-path: ellipse(100% 100% at 50% 0);
@@ -234,7 +234,7 @@ SINGLE / PAGE ARTICLE
 }
 .post-content h2 {
     font-size: var(--font-lg);
-    background: url(images/leaf-left.svg) left top/24px 28px no-repeat;
+    background: url(assets/images/leaf-left.svg) left top/24px 28px no-repeat;
     border-bottom: 4px double var(--light-grey);
     padding: 0 .5rem .75rem 2rem;
     margin: 3rem 0 .5rem;
@@ -470,7 +470,7 @@ h3#reply-title {
 FOOTER
 ================================================ */
 .site-footer {
-    background: url(images/footer.svg)center/cover;
+    background: url(assets/images/footer.svg)center/cover;
     text-align: center;
     color: var(--white);
     padding: 5rem 0 3rem;
