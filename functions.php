@@ -1,8 +1,15 @@
 <?php
 
 /**
+ * 共通変数宣言
+ * 呼び出す際は関数直下にglobal $post_types;を記述する。
+ */
+$post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
+
+/**
  * ファイルの読み込み
  */
+add_action('wp_enqueue_scripts', 'add_files');
 function add_files()
 {
   // リセットCSS
@@ -12,11 +19,11 @@ function add_files()
   // JavaScriptファイル
   wp_enqueue_script('main-script', get_theme_file_uri() . '/assets/js/script.js', array(), '', true);
 }
-add_action('wp_enqueue_scripts', 'add_files');
 
 /**
  * テーマ設定
  */
+add_action('after_setup_theme', 'theme_setup');
 function theme_setup()
 {
   // titleタグ
@@ -32,12 +39,13 @@ function theme_setup()
     )
   );
 }
-add_action('after_setup_theme', 'theme_setup');
 
 /**
  * カスタム投稿
  */
+add_action( 'init', 'codex_custom_init' );
 function codex_custom_init() {
+  global $post_types;
   /**
    * カスタム投稿作成
    */
@@ -90,33 +98,87 @@ function codex_custom_init() {
   register_custom_post_type('essay', 'エッセイ', 'dashicons-admin-users');
 
   /**
-   * カスタムタクソノミー作成
+   * 階層あり（カテゴリー型）カスタムタクソノミー作成
    */
-  $taxonomy_labels = array(
-    'name'              => 'タクソノミー',
+  $category_taxonomy_labels = array(
+    'name'              => 'カテゴリー',
   );
 
-  $taxonomy_args = array(
-    'labels'            => $taxonomy_labels,
-    'hierarchical'      => true,
-    'show_in_rest'      => true,
-    'show_admin_column' => true,
+  $category_taxonomy_args = array(
+    'labels'            => $category_taxonomy_labels,
+    'hierarchical'      => true, // 階層なし
+    'show_in_rest'      => true, // ブロックエディター対応
+    'show_admin_column' => true, // 管理画面に列表示
   );
   // カスタムタクソノミーを作成
   // register_taxonomy( $taxonomy, $object_type, $args );
   // $taxonomyは一意
-  $post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
+  // $object_type：どの投稿に紐づけるか
+  // $category_post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
+
+  // foreach ( $category_post_types as $category_post_type ) {
+  //   register_taxonomy( 'category_' . $category_post_type, array( $category_post_type ), $category_taxonomy_args );
+  // }
 
   foreach ( $post_types as $post_type ) {
-    register_taxonomy( $post_type, array( $post_type ), $taxonomy_args );
+    register_taxonomy( 'category_' . $post_type, array( $post_type ), $category_taxonomy_args );
+  }
+
+  /**
+   * 階層なし（タグ型）カスタムタクソノミー作成
+   */
+  $tag_taxonomy_labels = array(
+    'name'              => 'タグ',
+  );
+
+  $tag_taxonomy_args = array(
+    'labels'            => $tag_taxonomy_labels,
+    'hierarchical'      => false, // 階層なし
+    'show_in_rest'      => true,
+    'show_admin_column' => true,
+  );
+  // カスタムタクソノミーを作成
+  // $tag_post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
+
+  // foreach ( $tag_post_types as $tag_post_type ) {
+  //   register_taxonomy( 'tag_' . $tag_post_type, $tag_post_type, $tag_taxonomy_args );
+  // }
+  foreach ( $post_types as $post_type ) {
+    register_taxonomy( 'tag_' . $post_type, $post_type, $tag_taxonomy_args );
+  }
+
+}
+
+/**
+ * カスタムタクソノミー　カテゴリー検索
+ */
+add_action( 'restrict_manage_posts', 'add_custom_category_filter' );
+function add_custom_category_filter() {
+  global $typenow;    // 現在表示されている管理画面の投稿タイプを取得
+  global $post_type;  // 管理用グローバル変数
+  global $post_types; // 共通宣言
+
+  if (in_array($post_type, $post_types)) {    // 投稿タイプが配列に含まれる場合に処理を行う
+    $taxonomy = 'category_' . $typenow;
+    wp_dropdown_categories(
+      array(
+        'show_option_all' => 'カテゴリー一覧', //すべてのカテゴリを表示するために表示するテキスト
+        'taxonomy'        => $taxonomy,
+        'name'            => $taxonomy,
+        'orderby'         => 'name',           // 名前で並べ替え
+        'selected'        => get_query_var($taxonomy),
+        'show_count'      => true,             // 投稿数表示
+        'value_field'     => 'slug'            // フォームの option 要素の 'value' 属性へ入れるタームのフィールド
+      )
+    );
   }
 }
-add_action( 'init', 'codex_custom_init' );
 
 /**
  * アーカイブタイトルを削除する
  */
 function custom_archive_title() {
+  add_action( 'after_setup_theme', 'custom_archive_title' );
   add_filter( 'get_the_archive_title', function ($title) {
       if (is_category()) {
           $title = single_cat_title('',false);
@@ -138,4 +200,3 @@ function custom_archive_title() {
       return $title;
   });
 }
-add_action( 'after_setup_theme', 'custom_archive_title' );
