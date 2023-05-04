@@ -6,31 +6,6 @@
  */
 $post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
 
-// $post_typesの各要素に'category_'を付ける
-// function add_category_prefix( $post_types ) {
-//   $prefixed_post_types = array();
-//   foreach ( $post_types as $post_type ) {
-//     $prefixed_post_types[] = 'category_' . $post_type;
-//   }
-//   return $prefixed_post_types;
-// }
-// $post_types_with_prefix = add_category_prefix( $post_types );
-
-function add_all_posttype($where,$r){
-  if( is_post_type_archive('backend')){
-
-  $types= "'design','frontend','backend','tool'";
-  return str_replace(
-  "post_type = 'post' ",
-  "post_type IN(". $types.")" ,
-  $where
-  );
-  }else{
-  return $where;
-  }
-  }
-  add_filter('getarchives_where','add_all_posttype',10,2);
-
 /**
  * ファイルの読み込み
  * wp_enqueue_style( $handle, $src, $deps, $ver, $media )
@@ -60,9 +35,10 @@ function theme_setup()
 {
   // titleタグ
   add_theme_support('title-tag');
-
   // アイキャッチ画像
   add_theme_support('post-thumbnails');
+  // 検索
+  add_theme_support('html5', array( 'search-form'));
 
   // メニュー
   register_nav_menus(
@@ -70,6 +46,34 @@ function theme_setup()
       'main-menu' => 'メインメニュー',
     )
   );
+}
+
+
+/**
+ * アーカイブタイトルを削除する
+ */
+add_action( 'after_setup_theme', 'custom_archive_title' );
+function custom_archive_title() {
+  add_filter( 'get_the_archive_title', function ($title) {
+      if (is_category()) {
+          $title = single_cat_title('',false);
+      // } elseif (is_tag()) {
+      //     $title = single_tag_title('',false);
+      // } elseif (is_tax()) {
+          // $title = single_term_title('',false);
+      } elseif (is_post_type_archive() ){
+          $title = post_type_archive_title('',false);
+      // } elseif (is_date()) {
+      //     $title = get_the_time('Y年n月');
+      // } elseif (is_search()) {
+      //     $title = '検索結果：'.esc_html( get_search_query(false) );
+      // } elseif (is_404()) {
+      //     $title = '「404」ページが見つかりません';
+      } else {
+
+      }
+      return $title;
+  });
 }
 
 /**
@@ -193,31 +197,4 @@ function add_custom_category_filter() {
       )
     );
   }
-}
-
-/**
- * アーカイブタイトルを削除する
- */
-function custom_archive_title() {
-  add_action( 'after_setup_theme', 'custom_archive_title' );
-  add_filter( 'get_the_archive_title', function ($title) {
-      if (is_category()) {
-          $title = single_cat_title('',false);
-      // } elseif (is_tag()) {
-      //     $title = single_tag_title('',false);
-      // } elseif (is_tax()) {
-      //     $title = single_term_title('',false);
-      } elseif (is_post_type_archive() ){
-          $title = post_type_archive_title('',false);
-      // } elseif (is_date()) {
-      //     $title = get_the_time('Y年n月');
-      // } elseif (is_search()) {
-      //     $title = '検索結果：'.esc_html( get_search_query(false) );
-      // } elseif (is_404()) {
-      //     $title = '「404」ページが見つかりません';
-      } else {
-
-      }
-      return $title;
-  });
 }

@@ -2,20 +2,12 @@
 
 <ul class="site-sidebar">
   <!-- ▼ここから検索ボックス -->
-  <!-- <li class="widget widget_block">
-    <h3>検索</h3>
+  <li class="widget widget_block">
+    <h3>サイト内検索</h3>
   </li>
   <li class="widget widget_block widget_search">
-    <form role="search" method="get" id="searchform" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search" action="<?php echo esc_url(home_url('/')); ?>">
-      <div>
-        <label class="wp-block-search__input-1" for="s"><?php _x('Search for:', 'label'); ?></label>
-        <div class="wp-block-search__inside-wrapper">
-          <input class="wp-block-search__input" type="text" value="<?php echo get_search_query(); ?>" name="s" id="s">
-          <button class="wp-block-search__button" type="submit" id="searchsubmit"><?php echo esc_attr_x('Search', 'submit button'); ?></button>
-        </div>
-      </div>
-    </form>
-  </li> -->
+    <?php get_search_form(); ?>
+  </li>
   <!-- ▲ここまで検索ボックス -->
 
   <!-- ▼ここから最新投稿 -->
