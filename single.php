@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php
+    if (!defined('ABSPATH')) exit;
+    get_header();
+?>
 
     <main class="main-contents wrapper">
         <div class="post-list">
@@ -15,7 +18,7 @@
                     <?php the_category(); ?>
                 </header>
                 <div class="post-content wrapper">
-                    <?php the_content(); ?>                             
+                    <?php the_content(); ?>
                 </div>
                 <footer class="post-footer wrapper">
                     <?php the_tags('<div class="tags-links"><ul><li>', '</li><li>', '</ul></div>'); ?>

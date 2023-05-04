@@ -6,14 +6,46 @@
  */
 $post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
 
+// $post_typesの各要素に'category_'を付ける
+// function add_category_prefix( $post_types ) {
+//   $prefixed_post_types = array();
+//   foreach ( $post_types as $post_type ) {
+//     $prefixed_post_types[] = 'category_' . $post_type;
+//   }
+//   return $prefixed_post_types;
+// }
+// $post_types_with_prefix = add_category_prefix( $post_types );
+
+function add_all_posttype($where,$r){
+  if( is_post_type_archive('backend')){
+
+  $types= "'design','frontend','backend','tool'";
+  return str_replace(
+  "post_type = 'post' ",
+  "post_type IN(". $types.")" ,
+  $where
+  );
+  }else{
+  return $where;
+  }
+  }
+  add_filter('getarchives_where','add_all_posttype',10,2);
+
 /**
  * ファイルの読み込み
+ * wp_enqueue_style( $handle, $src, $deps, $ver, $media )
+ * $handle:ユニーク
  */
 add_action('wp_enqueue_scripts', 'add_files');
 function add_files()
 {
   // リセットCSS
   wp_enqueue_style('reset-style', get_theme_file_uri('/assets/css/reset.css'));
+  // 各CSS
+  wp_enqueue_style('common-style', get_theme_file_uri('/assets/css/common.css'));
+  wp_enqueue_style('header-style', get_theme_file_uri('/assets/css/header.css'));
+  wp_enqueue_style('footer-style', get_theme_file_uri('/assets/css/footer.css'));
+  wp_enqueue_style('sidebar-style', get_theme_file_uri('/assets/css/sidebar.css'));
   // メインのCSSファイル
   wp_enqueue_style('main-style', get_stylesheet_uri());
   // JavaScriptファイル
@@ -114,12 +146,6 @@ function codex_custom_init() {
   // register_taxonomy( $taxonomy, $object_type, $args );
   // $taxonomyは一意
   // $object_type：どの投稿に紐づけるか
-  // $category_post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
-
-  // foreach ( $category_post_types as $category_post_type ) {
-  //   register_taxonomy( 'category_' . $category_post_type, array( $category_post_type ), $category_taxonomy_args );
-  // }
-
   foreach ( $post_types as $post_type ) {
     register_taxonomy( 'category_' . $post_type, array( $post_type ), $category_taxonomy_args );
   }
@@ -138,11 +164,6 @@ function codex_custom_init() {
     'show_admin_column' => true,
   );
   // カスタムタクソノミーを作成
-  // $tag_post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
-
-  // foreach ( $tag_post_types as $tag_post_type ) {
-  //   register_taxonomy( 'tag_' . $tag_post_type, $tag_post_type, $tag_taxonomy_args );
-  // }
   foreach ( $post_types as $post_type ) {
     register_taxonomy( 'tag_' . $post_type, $post_type, $tag_taxonomy_args );
   }

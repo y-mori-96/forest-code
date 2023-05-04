@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php
+    if (!defined('ABSPATH')) exit;
+    get_header();
+?>
 
     <main class="main-contents wrapper">
         <div class="post-list">
@@ -13,7 +16,7 @@
                     </h1>
                 </header>
                 <div class="post-content wrapper">
-                    <?php the_content(); ?>                             
+                    <?php the_content(); ?>
                 </div>
             </article>
             <?php endwhile; else : ?>

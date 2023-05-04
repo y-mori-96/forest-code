@@ -1,10 +1,13 @@
-<?php get_header(); ?>
+<?php
+    if (!defined('ABSPATH')) exit;
+    get_header();
+?>
 
     <main class="main-contents wrapper">
         <div class="post-list">
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <article class="post-item">
-                    
+
                     <a href="<?php echo esc_url(get_permalink()); ?>">
                         <?php if(has_post_thumbnail()): ?>
                             <?php the_post_thumbnail('medium'); ?>
@@ -30,5 +33,9 @@
             <?php posts_nav_link(' ', '← 新しい投稿', '過去の投稿 →'); ?>
         </div>
     </main>
+
+    <aside class="contents-column-sidebar">
+        <?php get_sidebar(); ?>
+    </aside>
 
 <?php get_footer(); ?>

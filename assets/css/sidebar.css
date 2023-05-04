@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/*
+SIDEBER
+================================================ */
+.sidebar-contents {
+    background-color: var(--white);
+    padding: 1.25rem;
+}
+
+.site-sidebar {
+    font-size: 14px;
+}
+.site-sidebar li.widget {
+    margin-bottom: 20px;
+}
+.site-sidebar li.widget h3 {
+    font-size: 20px;
+}
+
+.site-sidebar li.widget ul {
+    margin-left: 1.5em;
+}
+
+.site-sidebar li.widget ul li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+}
+
+
+.site-sidebar li.widget .sidebar-post-lists {
+  margin-left: 0;
+}
+.site-sidebar li.widget ul .sidebar-post-list {
+  margin-bottom: 10px;
+  list-style: none;
+}
+.sidebar-post-link {
+  display: flex;
+  gap: 14px;
+}
+.sidebar-post-thumb img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+.sidebar-post-body {
+  flex: 1 0 0%;
+}
+
+.site-sidebar select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--grey);
+}

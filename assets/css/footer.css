@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+
+/*
+FOOTER
+================================================ */
+.site-footer {
+  background: url(../images/footer.svg)center/cover;
+  text-align: center;
+  color: var(--white);
+  padding: 5rem 0 3rem;
+  margin-top: 2rem;
+}
+.copyright {
+  font-size: var(--font-sm);
+  color: rgba(255,255,255,.6)
+}
+
+/*
+MEDIUM SIZE
+================================================ */
+@media(min-width: var(--min-width-md)){
+  .site-footer {
+    padding: 9rem 0 5rem;
+  }
+}
