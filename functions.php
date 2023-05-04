@@ -21,6 +21,7 @@ function add_files()
   wp_enqueue_style('header-style', get_theme_file_uri('/assets/css/header.css'));
   wp_enqueue_style('footer-style', get_theme_file_uri('/assets/css/footer.css'));
   wp_enqueue_style('sidebar-style', get_theme_file_uri('/assets/css/sidebar.css'));
+  wp_enqueue_style('404-style', get_theme_file_uri('/assets/css/404.css'));
   // メインのCSSファイル
   wp_enqueue_style('main-style', get_stylesheet_uri());
   // JavaScriptファイル
