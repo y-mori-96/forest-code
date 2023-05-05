@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 共通変数宣言
  * 呼び出す際は関数直下にglobal $post_types;を記述する。
@@ -21,12 +20,25 @@ function add_files()
   wp_enqueue_style('header-style', get_theme_file_uri('/assets/css/header.css'));
   wp_enqueue_style('footer-style', get_theme_file_uri('/assets/css/footer.css'));
   wp_enqueue_style('sidebar-style', get_theme_file_uri('/assets/css/sidebar.css'));
-  wp_enqueue_style('404-style', get_theme_file_uri('/assets/css/404.css'));
+  wp_enqueue_style('post-list-style', get_theme_file_uri('/assets/css/post_list.css'));
+  wp_enqueue_style('single-style', get_theme_file_uri('/assets/css/single.css'));
+  wp_enqueue_style('block-style', get_theme_file_uri('/assets/css/block.css'));
+  wp_enqueue_style('tag-list-style', get_theme_file_uri('/assets/css/tag_list.css'));
+  wp_enqueue_style('form-style', get_theme_file_uri('/assets/css/form.css'));
+  wp_enqueue_style('comments-style', get_theme_file_uri('/assets/css/comments.css'));
   // メインのCSSファイル
   wp_enqueue_style('main-style', get_stylesheet_uri());
   // JavaScriptファイル
   wp_enqueue_script('main-script', get_theme_file_uri() . '/assets/js/script.js', array(), '', true);
+
 }
+
+/**
+ * functionファイル読込み
+ */
+get_template_part( '/assets/functions/create_custom_post' );
+get_template_part( '/assets/functions/delete_archive_title' );
+get_template_part( '/assets/functions/get_official_document_url');
 
 /**
  * テーマ設定
@@ -41,6 +53,7 @@ function theme_setup()
   // 検索
   add_theme_support('html5', array( 'search-form'));
 
+
   // メニュー
   register_nav_menus(
     array(
@@ -50,152 +63,28 @@ function theme_setup()
 }
 
 
-/**
- * アーカイブタイトルを削除する
- */
-add_action( 'after_setup_theme', 'custom_archive_title' );
-function custom_archive_title() {
-  add_filter( 'get_the_archive_title', function ($title) {
-      if (is_category()) {
-          $title = single_cat_title('',false);
-      // } elseif (is_tag()) {
-      //     $title = single_tag_title('',false);
-      // } elseif (is_tax()) {
-          // $title = single_term_title('',false);
-      } elseif (is_post_type_archive() ){
-          $title = post_type_archive_title('',false);
-      // } elseif (is_date()) {
-      //     $title = get_the_time('Y年n月');
-      // } elseif (is_search()) {
-      //     $title = '検索結果：'.esc_html( get_search_query(false) );
-      // } elseif (is_404()) {
-      //     $title = '「404」ページが見つかりません';
-      } else {
+//（タクソノミーと）タームのリンクを取得する
+function custom_taxonomies_terms_links(){
+  // 現在の投稿オブジェクトを取得
+  $post = get_post();
+  $post_type = get_post_type();
 
-      }
-      return $title;
-  });
-}
+  // 投稿に付けられたタグを取得
+  $terms = get_the_terms( $post->ID, 'tag_' . $post_type );
 
-/**
- * カスタム投稿
- */
-add_action( 'init', 'codex_custom_init' );
-function codex_custom_init() {
-  global $post_types;
-  /**
-   * カスタム投稿作成
-   */
-  function register_custom_post_type($name, $label, $icon) {
-    $custom_post_labels = array(
-      'name' => $label
-    );
-
-    //投稿時に使用できる投稿用のパーツを指定
-    $custom_post_supports = array(
-      'title',      //タイトルフォーム
-      'editor',     //エディター(内容の編集)
-      'thumbnail',  //アイキャッチ画像
-      'excerpt',    //抜粋
-      'revisions',  //下書きとして保存
-    );
-
-    $custom_post_args = array(
-      // 作成した投稿タイプのラベル名、メニュー名、新規作成画面でのラベル名などを指定
-      'labels'             => $custom_post_labels,
-
-      // 公開されるかどうかを指定(初期値： false)
-      'public'             => true,
-
-      // アーカイブページを有効にするかどうかを指定(初期値： false)
-      'has_archive'        => true,
-
-      // メニューで使用するアイコン
-      'menu_icon'          => $icon,
-
-      // 新エディターに対応(初期値： なし)
-      'show_in_rest'       => true,
-
-      // 投稿タイプでサポートする投稿フォーマットを指定
-      'supports' => $custom_post_supports
-    );
-
-    // カスタム投稿タイプを作成
-    // register_post_type(post_type, args)
-    // post_typeパラメーター：投稿タイプの名前を指定
-    // argsパラメーター     ：投稿タイプの設定を含む配列
-    register_post_type($name, $custom_post_args);
+  $out = array();
+  if ( !empty( $terms ) ) {
+    // $out[] = "<h2>タグ</h2>\n<ul>";
+    $out[] = "<ul>";
+    foreach ( $terms as $term ) {
+      $out[] =
+        '  <li><a href="'
+      .    get_term_link( $term->slug, 'tag_' . $post_type ) .'">'
+      .    $term->name
+      . "</a></li>\n";
+    }
+    $out[] = "</ul>\n";
   }
 
-  register_custom_post_type('development', '開発', 'dashicons-feedback');
-  register_custom_post_type('design', 'デザイン', 'dashicons-admin-customizer');
-  register_custom_post_type('frontend', 'フロントエンド', 'dashicons-laptop');
-  register_custom_post_type('backend', 'バックエンド', 'dashicons-desktop');
-  register_custom_post_type('tool', 'ツール', 'dashicons-admin-tools');
-  register_custom_post_type('essay', 'エッセイ', 'dashicons-admin-users');
-
-  /**
-   * 階層あり（カテゴリー型）カスタムタクソノミー作成
-   */
-  $category_taxonomy_labels = array(
-    'name'              => 'カテゴリー',
-  );
-
-  $category_taxonomy_args = array(
-    'labels'            => $category_taxonomy_labels,
-    'hierarchical'      => true, // 階層なし
-    'show_in_rest'      => true, // ブロックエディター対応
-    'show_admin_column' => true, // 管理画面に列表示
-  );
-  // カスタムタクソノミーを作成
-  // register_taxonomy( $taxonomy, $object_type, $args );
-  // $taxonomyは一意
-  // $object_type：どの投稿に紐づけるか
-  foreach ( $post_types as $post_type ) {
-    register_taxonomy( 'category_' . $post_type, array( $post_type ), $category_taxonomy_args );
-  }
-
-  /**
-   * 階層なし（タグ型）カスタムタクソノミー作成
-   */
-  $tag_taxonomy_labels = array(
-    'name'              => 'タグ',
-  );
-
-  $tag_taxonomy_args = array(
-    'labels'            => $tag_taxonomy_labels,
-    'hierarchical'      => false, // 階層なし
-    'show_in_rest'      => true,
-    'show_admin_column' => true,
-  );
-  // カスタムタクソノミーを作成
-  foreach ( $post_types as $post_type ) {
-    register_taxonomy( 'tag_' . $post_type, $post_type, $tag_taxonomy_args );
-  }
-
-}
-
-/**
- * カスタムタクソノミー　カテゴリー検索
- */
-add_action( 'restrict_manage_posts', 'add_custom_category_filter' );
-function add_custom_category_filter() {
-  global $typenow;    // 現在表示されている管理画面の投稿タイプを取得
-  global $post_type;  // 管理用グローバル変数
-  global $post_types; // 共通宣言
-
-  if (in_array($post_type, $post_types)) {    // 投稿タイプが配列に含まれる場合に処理を行う
-    $taxonomy = 'category_' . $typenow;
-    wp_dropdown_categories(
-      array(
-        'show_option_all' => 'カテゴリー一覧', //すべてのカテゴリを表示するために表示するテキスト
-        'taxonomy'        => $taxonomy,
-        'name'            => $taxonomy,
-        'orderby'         => 'name',           // 名前で並べ替え
-        'selected'        => get_query_var($taxonomy),
-        'show_count'      => true,             // 投稿数表示
-        'value_field'     => 'slug'            // フォームの option 要素の 'value' 属性へ入れるタームのフィールド
-      )
-    );
-  }
+  return implode('', $out );
 }

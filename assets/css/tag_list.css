@@ -1,0 +1,22 @@
+@charset 'UTF-8';
+
+/*
+TAG LIST
+================================================ */
+.tags-links li {
+  display: inline-block;
+  font-size: var(--font-sm);
+  border: 1px solid var(--light-grey);
+  border-radius: var(--round-sm);
+  padding: .4rem .5rem .5rem;
+  margin-right: .25rem;
+  margin-bottom: .25rem;
+}
+.tags-links a::before {
+  content: '#';
+  color: var(--light-grey);
+  margin-right: .25rem;
+}
+.tags-links a:hover {
+  color: var(--green);
+}

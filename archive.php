@@ -26,6 +26,17 @@
                                 </h2>
                                 <time class="post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">公開日　　：<?php the_date(); ?><br>最終更新日：<?php the_modified_date(); ?></time>
                                 <?php the_category(); ?>
+
+                                <?php $terms = get_the_terms($post->ID, 'custom_taxonomy'); ?>
+                                <?php if ($terms && !is_wp_error($terms)): ?>
+                                    <ul class="post-categories">
+                                        <?php foreach ($terms as $term): ?>
+                                            <li class="post-category">
+                                                <?php echo esc_html($term->slug); ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
                             </header>
                         </article>
                     <?php endwhile; else : ?>

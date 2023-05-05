@@ -1,0 +1,180 @@
+@charset 'UTF-8';
+
+/*
+SINGLE / PAGE ARTICLE
+================================================ */
+.single .post-title,
+.page .post-title {
+    font-size: var(--font-lg);
+}
+.single .post-header {
+    padding: 4rem 1rem 1rem;
+}
+.page .post-header {
+    padding: 1rem;
+}
+.single .wp-post-image + .post-header,
+.page .wp-post-image + .post-header {
+    padding-top: 1rem;
+}
+.post-content {
+    padding-bottom: 1rem;
+}
+.post-content a {
+    color: var(--green);
+    text-decoration: underline;
+}
+.post-content a:hover {
+    color: var(--dark-blue);
+}
+.post-content h2 {
+    font-size: var(--font-lg);
+    background: url(assets/images/leaf-left.svg) left top/24px 28px no-repeat;
+    border-bottom: 4px double var(--light-grey);
+    padding: 0 .5rem .75rem 2rem;
+    margin: 3rem 0 .5rem;
+}
+.post-content h3 {
+    font-size: var(--font-lg);
+    margin-top: 2rem;
+}
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    font-weight: bold;
+}
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
+.post-content p,
+.post-content ul,
+.post-content ol,
+.post-content figure,
+.post-content blockquote,
+.post-content pre {
+    margin-bottom: 1rem;
+}
+.post-content figcaption {
+    font-size: var(--font-sm);
+    text-align: center;
+}
+.post-content img {
+    margin-bottom: .5rem;
+    height: auto;
+}
+.post-content .wp-block-image:not(.is-style-rounded) img {
+    border-radius: var(--round-md);
+}
+.post-content ul,
+.post-content ol {
+    padding-left: 2rem;
+}
+.post-content ul {
+    list-style: square;
+}
+.post-content ol {
+    list-style: decimal;
+}
+.post-content li {
+    line-height: 1.5;
+}
+.post-content li::marker {
+    color: var(--green);
+}
+.post-content blockquote {
+    background: #eee;
+    padding: 1rem 1rem .25rem 2rem;
+    border-radius: var(--round-md);
+    position: relative;
+}
+.post-content blockquote::before {
+    content: '“';
+    position: absolute;
+    font-size: 3rem;
+    color: var(--light-grey);
+    top: 0;
+    left: 8px;
+}
+.post-content blockquote cite {
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+.post-footer {
+    padding-bottom: 1rem;
+}
+.post-content code,
+.post-content kbd {
+        background: #eee;
+        padding: 3px;
+        border-radius: 3px;
+        margin: 0 3px;
+}
+
+/*
+MEDIUM SIZE
+================================================ */
+@media(min-width: 768px){
+    /* SINGLE / PAGE ARTICLE */
+    .single .post-item .wp-post-image,
+    .page .post-item .wp-post-image {
+        aspect-ratio: 16 / 9;
+    }
+    .single .post-item:hover,
+    .page .post-item:hover {
+        box-shadow: none;
+    }
+    .single .post-header {
+        padding: 4rem 3rem 2rem;
+    }
+    .page .post-header {
+        padding: 2rem 3rem;
+    }
+    .single .wp-post-image + .post-header,
+    .page .wp-post-image + .post-header {
+        padding-top: 2rem;
+    }
+    .single .post-title,
+    .page .post-title {
+        font-size: var(--font-xl);
+    }
+    .post-content {
+        padding-bottom: 2rem;
+    }
+    .post-content h2 {
+        font-size: var(--font-xl);
+        margin-bottom: 1rem;
+    }
+    .post-content h3 {
+        font-size: var(--font-xl);
+        margin-top: 3rem;
+    }
+    .post-content h4 {
+        font-size: var(--font-lg);
+        margin-top: 3rem;
+    }
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6,
+    .post-content p,
+    .post-content ul,
+    .post-content ol,
+    .post-content figure,
+    .post-content blockquote {
+        margin-bottom: 1.5rem;
+    }
+    .post-content img {
+        margin-bottom: 1rem;
+    }
+    .post-content blockquote {
+        padding: 1.5rem 1.5rem .25rem 2.5rem;
+    }
+    .post-content blockquote::before {
+        top: 2px;
+        left: 10px;
+    }
+    .post-footer {
+        padding-bottom: 3rem;
+    }
+}

@@ -3,8 +3,11 @@
 SIDEBER
 ================================================ */
 .sidebar-contents {
+    height: auto;
     background-color: var(--white);
     padding: 1.25rem;
+    box-shadow: var(--box-shadow);
+    display: none;
 }
 
 .site-sidebar {
@@ -51,4 +54,15 @@ SIDEBER
   width: 100%;
   padding: 10px;
   border: 1px solid var(--grey);
+}
+
+@media(min-width: 768px){
+  /* LAYOUT  */
+  .sidebar-contents {
+    height: auto;
+    background-color: var(--white);
+    padding: 1.25rem;
+    box-shadow: var(--box-shadow);
+    display: block;
+  }
 }

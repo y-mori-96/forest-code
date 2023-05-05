@@ -1,0 +1,45 @@
+@charset 'UTF-8';
+
+/*
+BLOCK
+================================================ */
+.wp-caption {
+  max-width: 100%;
+}
+a.wp-block-button__link {
+    color: var(--white);
+    text-decoration: none;
+}
+.wp-block-code {
+    font-family: Menlo,Consolas,monaco,monospace;
+    padding: 0.8em 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: var(--font-sm);
+    line-height: 1.5;
+}
+.wp-block-code code {
+    background: none;
+}
+.wp-block-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.wp-block-table thead {
+    border-bottom: 3px solid;
+}
+.wp-block-table td,
+.wp-block-table th {
+    padding: 0.5em;
+    border: 1px solid;
+    word-break: normal;
+}
+.wp-block-separator {
+    margin: 2rem auto;
+    border-color: var(--light-grey);
+    width: 100px;
+}
+.wp-block-calendar {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

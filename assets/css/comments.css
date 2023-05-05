@@ -1,0 +1,57 @@
+@charset 'UTF-8';
+
+/*
+COMMENTS
+================================================ */
+.commentlist {
+  margin-bottom: 3rem;
+}
+h3#comments,
+h3#reply-title {
+  font-size: var(--font-lg);
+  border-bottom: 4px double var(--light-grey);
+  padding-bottom: 1rem;
+  margin: 3rem 0 1rem;
+}
+.comment {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.comment .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--round-lg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.comment-meta {
+  font-size: var(--font-sm);
+  color: var(--light-grey);
+  display: block;
+  margin-bottom: .5rem;
+}
+.comment-author {
+  font-weight: bold;
+  display: block;
+  margin-bottom: .5rem;
+}
+.comment-body {
+  padding-left: 3.5rem;
+}
+.comment-body p a {
+  color: var(--green);
+  text-decoration: underline;
+}
+/* Comment form */
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+  display: block;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.comment-form-cookies-consent {
+  margin-bottom: 1rem;
+}

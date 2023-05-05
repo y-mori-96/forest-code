@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+
+/*
+FORM
+================================================ */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+    border: 1px solid var(--light-grey);
+    border-radius: var(--round-sm);
+    padding: .5rem;
+}
+input[type="submit"] {
+    padding: .75rem 1rem .85rem;
+    background: var(--green);
+    border-radius: var(--round-sm);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(123, 186, 147, .6);
+}
