@@ -114,7 +114,7 @@ SINGLE / PAGE ARTICLE
 /*
 MEDIUM SIZE
 ================================================ */
-@media(min-width: 768px){
+@media(min-width: 600px){
     /* SINGLE / PAGE ARTICLE */
     .single .post-item .wp-post-image,
     .page .post-item .wp-post-image {

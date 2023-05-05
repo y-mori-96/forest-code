@@ -18,7 +18,7 @@ FOOTER
 /*
 MEDIUM SIZE
 ================================================ */
-@media(min-width: var(--min-width-md)){
+@media(min-width: 600px){
   .site-footer {
     padding: 9rem 0 5rem;
   }
