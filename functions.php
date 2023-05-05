@@ -26,6 +26,7 @@ function add_files()
   wp_enqueue_style('tag-list-style', get_theme_file_uri('/assets/css/tag_list.css'));
   wp_enqueue_style('form-style', get_theme_file_uri('/assets/css/form.css'));
   wp_enqueue_style('comments-style', get_theme_file_uri('/assets/css/comments.css'));
+  wp_enqueue_style('button-style', get_theme_file_uri('/assets/css/components/button.css'));
   // メインのCSSファイル
   wp_enqueue_style('main-style', get_stylesheet_uri());
   // JavaScriptファイル

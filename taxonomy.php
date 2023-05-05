@@ -19,7 +19,9 @@
                 <?php endif; ?>
 
                 <div class="wrapper">
-                    <h2 class="post-list-title">まとめ投稿</h2>
+                    <div class="post-list-title-wrapper">
+                        <h2 class="post-list-title">まとめ投稿</h2>
+                    </div>
                     <div class="post-list">
                         <?php
                             // 現在の投稿タイプを取得
@@ -45,22 +47,18 @@
                             );
                             $the_query = new WP_Query( $args );
 
-                            if ( $the_query->have_posts() ) {
-                                while ( $the_query->have_posts() ) {
-                                    $the_query->the_post();
+                            if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
                         ?>
                             <!-- 投稿の情報を出力するコード -->
                             <?php echo get_template_part( '/assets/components/post_item' ); ?>
-                        <?php
-                                }
-                            } else {
-                                // 投稿が存在しない場合の処理
-                            }
-                            wp_reset_postdata();
-                        ?>
+                        <?php endwhile; else : ?>
+                            <p>記事はありません。</p>
+                        <?php endif; wp_reset_postdata(); ?>
                     </div>
 
-                    <h2 class="post-list-title">新着投稿</h2>
+                    <div class="post-list-title-wrapper">
+                        <h2 class="post-list-title">新着投稿</h2>
+                    </div>
                     <div class="post-list">
                         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                             <?php echo get_template_part( '/assets/components/post_item' ); ?>

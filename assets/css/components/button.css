@@ -1,0 +1,14 @@
+@charset 'UTF-8';
+
+/*
+BUTTON
+================================================ */
+.link-view-more {
+  padding: 0 var(--padding-sm);
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.link-view-more:hover {
+  text-decoration: underline;
+}

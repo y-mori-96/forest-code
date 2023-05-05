@@ -56,15 +56,18 @@ POST LIST
     padding: .5rem;
 }
 
-.post-list-title {
+.post-list-title-wrapper {
     height: var(--post-list-title);
     line-height: var(--post-list-title);
-    font-size: var(--font-xl);
     background-color: var(--white);
-    text-align: left;
     box-shadow: var(--box-shadow);
     margin-bottom: var(--margin-sm);
-    padding-left: 2rem;
+    padding: 0 2rem;
+}
+
+.post-list-title {
+    font-size: var(--font-xl);
+    text-align: left;
 }
 
 /* Post navigation */
