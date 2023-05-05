@@ -4,13 +4,12 @@
 ?>
 
     <div class="wrapper">
-        <h1 class="page-title"><?php the_archive_title(); ?></h1>
+        <h1 class="page-title">投稿一覧</h1>
     </div>
 
     <div class="wrapper">
         <div class="grid">
             <main class="main-contents">
-
                 <div class="wrapper">
                 <?php
                     $post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
@@ -53,13 +52,8 @@
                         }
                     }
                 ?>
-
-                  <div class="nav-links">
-                      <?php posts_nav_link(' ', '← 新しい投稿', '過去の投稿 →'); ?>
-                  </div>
-                </div>
+               </div>
             </main>
-
             <aside class="sidebar-contents">
                 <?php get_sidebar(); ?>
             </aside>
