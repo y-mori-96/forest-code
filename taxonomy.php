@@ -19,43 +19,46 @@
                 <?php endif; ?>
 
                 <div class="wrapper">
-                    <div class="post-list-title-wrapper">
-                        <h2 class="post-list-title">まとめ投稿</h2>
-                    </div>
-                    <div class="post-list">
-                        <?php
-                            // 現在の投稿タイプを取得
-                            $post_type = get_post_type();
-                            // 現在のタクソノミーの情報を取得
-                            $queried_object = get_queried_object();
+                    <?php
+                        // 現在の投稿タイプを取得
+                        $post_type = get_post_type();
+                        // 現在のタクソノミーの情報を取得
+                        $queried_object = get_queried_object();
 
-                            $args = array(
-                                'post_type' => $post_type,
-                                'tax_query' => array(
-                                    'relation' => 'AND',
-                                    array(
-                                        'taxonomy' => 'category_' . $post_type,
-                                        'field' => 'slug',
-                                        'terms' => $queried_object->slug,
-                                    ),
-                                    array(
-                                        'taxonomy' => 'tag_' . $post_type,
-                                        'field' => 'slug',
-                                        'terms' => 'summary',
-                                    ),
-                                )
-                            );
-                            $the_query = new WP_Query( $args );
+                        // カテゴリーに含まれるタグを取得
+                        $args = array(
+                            'post_type' => $post_type,
+                            'tax_query' => array(
+                                'relation' => 'AND',
+                                array(
+                                    'taxonomy' => 'category_' . $post_type,
+                                    'field' => 'slug',
+                                    'terms' => $queried_object->slug,
+                                ),
+                                array(
+                                    'taxonomy' => 'tag_' . $post_type,
+                                    'field' => 'slug',
+                                    'terms' => 'summary',
+                                ),
+                            )
+                        );
+                        $the_query = new WP_Query( $args );
+                    ?>
 
-                            if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
-                        ?>
-                            <!-- 投稿の情報を出力するコード -->
-                            <?php echo get_template_part( '/assets/components/post_item' ); ?>
-                        <?php endwhile; else : ?>
-                            <p>記事はありません。</p>
-                        <?php endif; wp_reset_postdata(); ?>
-                    </div>
+                    <!-- まとめ投稿 -->
+                    <?php if ( $the_query->have_posts() ) :?>
+                        <div class="post-list-title-wrapper">
+                                <h2 class="post-list-title">まとめ投稿</h2>
+                        </div>
+                        <div class="post-list">
+                            <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <!-- 投稿の情報を出力するコード -->
+                                <?php echo get_template_part( '/assets/components/post_item' ); ?>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+                        </div>
+                    <?php endif; ?>
 
+                    <!-- 新着投稿 -->
                     <div class="post-list-title-wrapper">
                         <h2 class="post-list-title">新着投稿</h2>
                     </div>
@@ -66,6 +69,7 @@
                             <p>記事はありません。</p>
                         <?php endif; ?>
                     </div>
+
                 </div>
 
                 <div class="nav-links">
