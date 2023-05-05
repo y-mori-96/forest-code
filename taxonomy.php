@@ -39,7 +39,7 @@
                                         'terms' => $queried_object->slug,
                                     ),
                                     array(
-                                        'taxonomy' => 'tag_backend',
+                                        'taxonomy' => 'tag_' . $post_type,
                                         'field' => 'slug',
                                         'terms' => 'summary',
                                     ),

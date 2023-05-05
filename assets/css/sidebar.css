@@ -10,16 +10,6 @@ SIDEBER
     display: none;
 }
 
-.site-sidebar {
-    font-size: 14px;
-}
-.site-sidebar li.widget {
-    margin-bottom: 20px;
-}
-.site-sidebar li.widget h3 {
-    font-size: 20px;
-}
-
 .site-sidebar li.widget ul {
     margin-left: 1.5em;
 }
@@ -28,7 +18,6 @@ SIDEBER
     list-style-type: disc;
     margin-bottom: 5px;
 }
-
 
 .site-sidebar li.widget .sidebar-post-lists {
   margin-left: 0;
@@ -46,14 +35,27 @@ SIDEBER
   height: 80px;
   object-fit: cover;
 }
-.sidebar-post-body {
-  flex: 1 0 0%;
+
+.sidebar-header-wrapper {
+  margin-bottom: var(--margin-sm);
+  border-bottom: 1px solid var(--grey);
 }
 
-.site-sidebar select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--grey);
+.sidebar-header {
+  font-size: var(--font-lg);
+}
+
+.sideber-taxonomy-label {
+  font-size: var(--font-md);
+  font-weight:bold;
+}
+
+.sideber-taxonomy-item {
+  font-size: var(--font-md);
+}
+
+.sidebar-margin-md {
+  margin-bottom: var(--margin-md);
 }
 
 @media(min-width: 768px){

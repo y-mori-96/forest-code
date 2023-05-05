@@ -43,3 +43,7 @@ a.wp-block-button__link {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+
+.wp-block-categories-list {
+    margin-bottom: var(--margin-sm);
+}

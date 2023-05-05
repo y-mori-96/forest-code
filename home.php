@@ -35,7 +35,10 @@
                                 $the_query = new WP_Query( $args );
                                 if ( $the_query->have_posts() ) : ?>
                                     <div class="wrapper">
-                                        <h2 class="post-list-title"><?php echo $term->name; ?></h2>
+                                        <div class="post-list-title-wrapper flex-row-between">
+                                            <h2 class="post-list-title"><?php echo $term->name; ?></h2>
+                                            <a href="<?php echo get_term_link($term); ?>" class="link-view-more">もっと見る</a>
+                                        </div>
                                         <div class="post-list">
                                             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                                                 <article class="post-item">

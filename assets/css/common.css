@@ -21,10 +21,10 @@ GLOBAＬ
   --padding-md: 2rem;
 
   /* Font/Space Size */
-  --font-sm: .75rem;
-  --font-md: 1rem;
-  --font-lg: 1.25rem;
-  --font-xl: 1.625rem;
+  --font-sm: .75rem;   /* 12px */
+  --font-md: 1rem;     /* 16px */
+  --font-lg: 1.25rem;  /* 20px */
+  --font-xl: 1.625rem; /* 26px */
 
   /* Border Radius Size */
   --round-sm: 6px;
