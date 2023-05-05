@@ -8,9 +8,9 @@ POST LIST
 .search .post-list {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-    margin-bottom: 3rem;
-    max-width: 375px;
+    gap: var(--gap-md);
+    margin-bottom: var(--margin-lg);
+    max-width: var(--breakpoint-tablet);
     margin: 0 auto var(--margin-md) auto;
     padding: var(--padding-md);
 }
@@ -124,15 +124,16 @@ MEDIUM SIZE
         max-width: 890px;
         padding: 0;
     }
-    .post-item:hover {
-        box-shadow: 0 0 10px rgba(0,0,0,.16);
-    }
     .post-categories li:hover {
         background: var(--dark-grey);
     }
     .nav-links a:hover {
         background: var(--dark-blue);
         box-shadow: 0 4px 10px rgba(57, 86, 92, .6);
+    }
+
+    .post-item:hover {
+        box-shadow: 0 0 10px rgba(0,0,0,.16);
     }
     .post-item .wp-post-image {
         aspect-ratio: 4 / 3;

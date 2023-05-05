@@ -32,7 +32,7 @@
             $the_query->the_post();
           ?>
             <li class="sidebar-post-list">
-              <a class="sidebar-post-link" href="<?php the_permalink(); // 記事リンク ?>">
+              <a class="sidebar-post-link flex-row-start-stretch" href="<?php the_permalink(); // 記事リンク ?>">
                 <span class="sidebar-post-thumb">
                   <?php if ( has_post_thumbnail() ) : ?>
                     <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
@@ -41,9 +41,11 @@
                   <?php endif; ?>
                 </span>
                 <span class="sidebar-post-body">
-                  <time datetime="<?php echo get_the_date('Y-m-d'); //ハイフン区切りの投稿日 ?>">
-                    <?php echo get_the_date('Y.m.d'); //ドット区切りの投稿日 ?>
-                  </time><br>
+                  <div class="sidebar-post-date-wrapper">
+                    <time datetime="<?php echo get_the_date('Y-m-d'); //ハイフン区切りの投稿日 ?>">
+                      公開日：<?php echo get_the_date('Y.m.d'); //ドット区切りの投稿日 ?>
+                    </time>
+                  </div>
                   <?php the_title(); // 記事タイトル ?>
                 </span>
               </a>

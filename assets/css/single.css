@@ -1,13 +1,48 @@
 @charset 'UTF-8';
-
 /*
 SINGLE / PAGE ARTICLE
 ================================================ */
+.single .post-item,
+.page .post-item {
+    padding: 2rem 3rem;
+}
+
+
+.single-post-item {
+    padding: 2rem 3rem;
+    background: var(--white);
+    border-radius: var(--round-md);
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+.single-post-item .wp-post-image {
+    border-radius: 0;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.single-post-date-wrapper {
+    margin-bottom: var(--margin-sm);
+}
+
+.single-post-date {
+    color: var(--dark-grey);
+    font-size: var(--font-md);
+}
+
+.single-post-header {
+    margin-bottom: var(--margin-md);
+}
+
 .single .post-title,
 .page .post-title {
     font-size: var(--font-lg);
 }
-.single .post-header {
+
+
+/* .single .post-header {
     padding: 4rem 1rem 1rem;
 }
 .page .post-header {
@@ -16,7 +51,7 @@ SINGLE / PAGE ARTICLE
 .single .wp-post-image + .post-header,
 .page .wp-post-image + .post-header {
     padding-top: 1rem;
-}
+} */
 .post-content {
     padding-bottom: 1rem;
 }
@@ -111,11 +146,30 @@ SINGLE / PAGE ARTICLE
         margin: 0 3px;
 }
 
+.shingle-post-tag-terms {
+}
+.shingle-post-tag-terms ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.shingle-post-tag-terms li {
+    background-color: var(--green);
+    color: var(--white);
+    padding: .75rem;
+    border-radius: var(--round-md);
+}
+
+
 /*
 MEDIUM SIZE
 ================================================ */
 @media(min-width: 600px){
-    /* SINGLE / PAGE ARTICLE */
+    /* .single .post-item,
+    .page .post-item {
+        padding: 4rem 3rem 2rem;
+    } */
+
     .single .post-item .wp-post-image,
     .page .post-item .wp-post-image {
         aspect-ratio: 16 / 9;
@@ -124,7 +178,7 @@ MEDIUM SIZE
     .page .post-item:hover {
         box-shadow: none;
     }
-    .single .post-header {
+    /* .single .post-header {
         padding: 4rem 3rem 2rem;
     }
     .page .post-header {
@@ -133,10 +187,11 @@ MEDIUM SIZE
     .single .wp-post-image + .post-header,
     .page .wp-post-image + .post-header {
         padding-top: 2rem;
-    }
+    } */
     .single .post-title,
     .page .post-title {
         font-size: var(--font-xl);
+        font-weight: bold;
     }
     .post-content {
         padding-bottom: 2rem;
@@ -176,5 +231,10 @@ MEDIUM SIZE
     }
     .post-footer {
         padding-bottom: 3rem;
+    }
+
+    .post-thumbnail {
+        margin: 0 auto;
+        max-width: var(--breakpoint-tablet);
     }
 }

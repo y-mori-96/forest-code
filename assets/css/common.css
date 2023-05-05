@@ -16,9 +16,12 @@ GLOBAＬ
   /* margin */
   --margin-sm: 1rem;
   --margin-md: 2rem;
+  --margin-lg: 3rem;
   /* padding */
   --padding-sm: 1rem;
   --padding-md: 2rem;
+  /* gap */
+  --gap-md: 1rem;
 
   /* Font/Space Size */
   --font-sm: .75rem;   /* 12px */
@@ -79,6 +82,10 @@ LAYOUT
 
 .grid {
   margin-bottom: 3rem;
+}
+
+.flex-row-start-stretch {
+  display: flex;
 }
 
 .flex-row-between {

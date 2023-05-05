@@ -3,31 +3,51 @@
     get_header();
 ?>
 
-    <main class="main-contents wrapper">
-        <div class="post-list">
-            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-            <article class="post-item">
-                <?php if(has_post_thumbnail()): ?>
-                    <?php the_post_thumbnail('medium_large'); ?>
-                <?php endif; ?>
-                <header class="post-header">
-                    <h1 class="post-title">
-                        <?php the_title(); ?>
-                    </h1>
-                    <time class="post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php the_date(); ?></time>
-                    <?php the_category(); ?>
-                </header>
-                <div class="post-content wrapper">
-                    <?php the_content(); ?>
+
+    <div class="wrapper">
+        <div class="grid">
+            <main class="main-contents">
+                <div class="post-list">
+                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                        <article class="single-post-item">
+                            <header class="single-post-header">
+                                <h1 class="post-title">
+                                    <?php the_title(); ?>
+                                </h1>
+                                <!-- 公開日/更新日 -->
+                                <div class="single-post-date-wrapper">
+                                    <time class="single-post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">公開日：<?php the_date(); ?>　　最終更新日：<?php the_modified_date(); ?></time>
+                                </div>
+                                <!-- サムネイル -->
+                                <div class="post-thumbnail">
+                                    <?php if(has_post_thumbnail()): ?>
+                                        <?php the_post_thumbnail('medium_large'); ?>
+                                    <?php else : ?>
+                                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/ph.png')); ?>" alt="<?php the_title(); ?>" >
+                                    <?php endif; ?>
+                                </div>
+                            </header>
+                            <!-- 本文 -->
+                            <div class="post-content wrapper">
+                                <?php the_content(); ?>
+                            </div>
+
+                            <!-- タグ -->
+                            <!-- <footer class="post-footer wrapper"> -->
+                            <footer class="wrapper shingle-post-tag-terms">
+                                <?php echo custom_taxonomies_terms_links(); ?>
+                            </footer>
+                        </article>
+                    <?php endwhile; else : ?>
+                        <p>記事はありません。</p>
+                    <?php endif; ?>
                 </div>
-                <footer class="post-footer wrapper">
-                    <?php the_tags('<div class="tags-links"><ul><li>', '</li><li>', '</ul></div>'); ?>
-                </footer>
-            </article>
-            <?php endwhile; else : ?>
-                <p>記事はありません。</p>
-            <?php endif; ?>
+            </main>
+
+            <aside class="sidebar-contents">
+                <?php get_sidebar(); ?>
+            </aside>
         </div>
-    </main>
+    </div>
 
 <?php get_footer(); ?>
