@@ -43,6 +43,10 @@ POST LIST
     position: absolute;
     top: 1rem;
     left: 1rem;
+}
+
+.post-tag-terms ul,
+.post-categories ul {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
