@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?php echo esc_url(get_theme_file_uri('/assets/images/leaf-left.svg')); ?>" type="image/svg+xml">
+    <link rel="icon" href="<?php echo esc_url(get_theme_file_uri('/assets/images/favicon-leaf.svg')); ?>" type="image/svg+xml">
 
     <?php wp_head(); ?>
 </head>
@@ -16,7 +16,12 @@
         <div class="wrapper">
             <h1 class="site-title">
                 <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img class="site-logo" src="<?php echo esc_url(get_theme_file_uri('/assets/images/logo.svg')); ?>" alt="<?php bloginfo('name'); ?>">
+                    <div class="site-title-wrapper">
+                        <img class="site-logo" src="<?php echo esc_url(get_theme_file_uri('/assets/images/logo-pc.svg')); ?>" alt="<?php bloginfo('name'); ?>">
+                        <p class="site-title-name">
+                            <?php bloginfo('name'); ?>
+                        </p>
+                    </div>
                 </a>
             </h1>
             <p class="site-description"><?php bloginfo('description'); ?></p>

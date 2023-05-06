@@ -101,6 +101,12 @@ LAYOUT
   display: flex;
 }
 
+.flex-row-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flex-row-between {
   display: flex;
   justify-content: space-between;
