@@ -6,8 +6,8 @@
 
     <div class="wrapper">
         <div class="grid">
-            <main class="main-contents">
-                <div class="post-list">
+            <main class="main-contents margin-auto">
+                <div class="post-list single-post-list">
                     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                         <article class="single-post-item">
                             <header class="single-post-header">

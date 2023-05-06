@@ -7,8 +7,8 @@ SIDEBER
     background-color: var(--white);
     padding: 1.25rem;
     box-shadow: var(--box-shadow);
-    display: none;
     border-radius: var(--round-md);
+    display: none;
 }
 
 .site-sidebar li.widget ul {
@@ -67,13 +67,25 @@ SIDEBER
   margin-bottom: var(--margin-sm);
 }
 
+/*
+PC-HALF SIZE
+================================================ */
+@media(min-width: 600px) {
+}
+
+/*
+TABLET SIZE
+================================================ */
 @media(min-width: 768px){
   /* LAYOUT  */
-  .sidebar-contents {
-    height: auto;
-    background-color: var(--white);
-    padding: 1.25rem;
-    box-shadow: var(--box-shadow);
-    display: block;
-  }
+
+}
+
+/*
+PC SIZE
+================================================ */
+@media(min-width: 1280px) {
+    .sidebar-contents {
+        display: block;
+    }
 }

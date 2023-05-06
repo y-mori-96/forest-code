@@ -14,14 +14,17 @@ GLOBAＬ
   --pale-yellow: #F3F3F2; /* 背景色 */
 
   /* margin */
+  --margin-none: 0;
   --margin-sm: 1rem;
   --margin-md: 2rem;
   --margin-lg: 3rem;
   /* padding */
+  --padding-none: 0;
   --padding-sm: 1rem;
   --padding-md: 2rem;
   /* gap */
   --gap-md: 1rem;
+  --gap-lg: 2rem;
 
   /* Font/Space Size */
   --font-sm: .75rem;   /* 12px */
@@ -38,6 +41,10 @@ GLOBAＬ
   --max-width-body: 1250px;   /* var(--max-width-body) */
   --max-width-main: 890px;    /* var(--max-width-main) */
   --max-width-sidebar: 360px; /* var(--max-width-sidebar) */
+  --max-width-pc: 1250px; /* var(--max-width-pc) */
+  --max-width-pc-half: 600px; /* var(--max-width-pc-half) */
+  --max-width-tablet: 768px; /* var(--max-width-tablet) */
+  --max-width-mobile: 375px; /* var(--max-width-mobile) */
 
   /* Height Size */
   --post-document-wrapper: 80px;
@@ -56,7 +63,7 @@ GLOBAＬ
 GENERAL STYLING
 ================================================ */
 body {
-color: var(--grey);
+  color: var(--grey);
   font-family: 'Noto Sans JP', sans-serif;
   background: var(--pale-yellow);
 }
@@ -80,7 +87,13 @@ LAYOUT
   margin: 0 auto;
 }
 
+.margin-auto {
+  margin: 0 auto;
+}
+
 .grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   margin-bottom: 3rem;
 }
 
@@ -103,7 +116,7 @@ MAIN
 }
 
 /*
-MEDIUM SIZE
+PC-HALF SIZE
 ================================================ */
 @media(min-width: 600px){
   /* LAYOUT  */
@@ -113,13 +126,18 @@ MEDIUM SIZE
 }
 
 /*
-MEDIUM SIZE
+TABLET SIZE
 ================================================ */
 @media(min-width: 768px){
+}
+
+/*
+PC SIZE
+================================================ */
+@media(min-width: 1280px){
   /* LAYOUT  */
   .grid {
-      display: grid;
       grid-template-columns: 1fr var(--max-width-sidebar);
-      gap: 1rem;
+      gap: var(--gap-md);
   }
 }

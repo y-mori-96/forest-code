@@ -2,11 +2,14 @@
 /*
 SINGLE / PAGE ARTICLE
 ================================================ */
+.single-post-list {
+    max-width: var(--max-width-mobile);
+}
+
 .single .post-item,
 .page .post-item {
     padding: 2rem 3rem;
 }
-
 
 .single-post-item {
     padding: 2rem 3rem;
@@ -98,9 +101,7 @@ SINGLE / PAGE ARTICLE
     margin-bottom: .5rem;
     height: auto;
 }
-.post-content .wp-block-image:not(.is-style-rounded) img {
-    border-radius: var(--round-md);
-}
+
 .post-content ul,
 .post-content ol {
     padding-left: 2rem;
@@ -146,8 +147,6 @@ SINGLE / PAGE ARTICLE
         margin: 0 3px;
 }
 
-.shingle-post-tag-terms {
-}
 .shingle-post-tag-terms ul {
     display: flex;
     flex-wrap: wrap;
@@ -162,7 +161,7 @@ SINGLE / PAGE ARTICLE
 
 
 /*
-MEDIUM SIZE
+PC-HALF SIZE
 ================================================ */
 @media(min-width: 600px){
     /* .single .post-item,
@@ -235,6 +234,34 @@ MEDIUM SIZE
 
     .post-thumbnail {
         margin: 0 auto;
-        max-width: var(--breakpoint-tablet);
+        max-width: var(--max-width-tablet);
+    }
+}
+
+
+/*
+PC-HALF SIZE
+================================================ */
+@media(min-width: 600px) {
+    .single-post-list {
+        max-width: var(--max-width-pc-half);
+    }
+}
+
+/*
+TABLET SIZE
+================================================ */
+@media(min-width: 768px) {
+    .single-post-list {
+        max-width: var(--max-width-tablet);
+    }
+}
+
+/*
+PC SIZE
+================================================ */
+@media(min-width: 1280px) {
+    .single-post-list {
+        max-width: var(--breakpoint-pc);
     }
 }

@@ -9,7 +9,7 @@
 
     <div class="wrapper">
         <div class="grid">
-            <main class="main-contents">
+            <main class="main-contents margin-auto">
 
                 <div class="wrapper">
                     <?php

@@ -10,7 +10,7 @@ POST LIST
     grid-template-columns: repeat(1, 1fr);
     gap: var(--gap-md);
     margin-bottom: var(--margin-lg);
-    max-width: var(--breakpoint-tablet);
+    max-width: var(--max-width-tablet);
     margin: 0 auto var(--margin-md) auto;
     padding: var(--padding-md);
 }
@@ -124,8 +124,8 @@ MEDIUM SIZE
     .archive .post-list,
     .search .post-list {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        max-width: 890px;
+        gap: var(--gap-lg);
+        max-width: var(--max-width-main);
         padding: 0;
     }
     .post-categories li:hover {
