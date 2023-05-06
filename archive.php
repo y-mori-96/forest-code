@@ -16,7 +16,7 @@
                         // 現在の投稿タイプを取得
                         $post_type = get_post_type();
                         // カテゴリー型のタクソノミーを取得
-                        $taxonomy = 'category_' . $post_type;
+                        $taxonomy = 'category-' . $post_type;
                         // カテゴリー型のタクソノミーあるタームを取得
                         $term_args = array(
                             'taxonomy'   => $taxonomy,
@@ -44,9 +44,7 @@
                         </div>
                         <div class="post-list">
                             <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                                <article class="post-item">
-                                    <?php echo get_template_part( '/assets/components/post_item' ); ?>
-                                </article>
+                                <?php echo get_template_part( '/assets/components/post_item' ); ?>
                             <?php endwhile; else : ?>
                                 <p>記事はありません。</p>
                             <?php endif; wp_reset_postdata(); ?>

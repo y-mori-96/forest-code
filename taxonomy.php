@@ -31,12 +31,12 @@
                             'tax_query' => array(
                                 'relation' => 'AND',
                                 array(
-                                    'taxonomy' => 'category_' . $post_type,
+                                    'taxonomy' => 'category-' . $post_type,
                                     'field' => 'slug',
                                     'terms' => $queried_object->slug,
                                 ),
                                 array(
-                                    'taxonomy' => 'tag_' . $post_type,
+                                    'taxonomy' => 'tag-' . $post_type,
                                     'field' => 'slug',
                                     'terms' => 'summary',
                                 ),

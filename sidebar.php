@@ -74,7 +74,7 @@
             <h2 class="sideber-taxonomy-label"><?php echo $post_type_obj->label; ?></h2>
             <ul class="wp-block-categories-list wp-block-categories">
                 <?php
-                    $terms = get_terms('category_' . $post_type);
+                    $terms = get_terms('category-' . $post_type);
                     foreach ($terms as $term) {
                         echo '<li class="cat-item">
                                 <a href="' . get_term_link($term) . '">' . $term->name . ' (' . $term->count . ')</a>
@@ -99,7 +99,7 @@
             <h2 class="sideber-taxonomy-label"><?php echo $post_type_obj->label; ?></h2>
             <ul class="wp-block-categories-list wp-block-categories">
                 <?php
-                    $terms = get_terms('tag_' . $post_type);
+                    $terms = get_terms('tag-' . $post_type);
                     foreach ($terms as $term) {
                         echo '<li class="sideber-taxonomy-item">
                             <a href="' . get_term_link($term) . '">' . $term->name . ' (' . $term->count . ')</a>

@@ -74,7 +74,7 @@ function codex_custom_init() {
   // $taxonomyは一意
   // $object_type：どの投稿に紐づけるか
   foreach ( $post_types as $post_type ) {
-    register_taxonomy( 'category_' . $post_type, array( $post_type ), $category_taxonomy_args );
+    register_taxonomy( 'category-' . $post_type, array( $post_type ), $category_taxonomy_args );
   }
 
   /**
@@ -92,7 +92,7 @@ function codex_custom_init() {
   );
   // カスタムタクソノミーを作成
   foreach ( $post_types as $post_type ) {
-    register_taxonomy( 'tag_' . $post_type, $post_type, $tag_taxonomy_args );
+    register_taxonomy( 'tag-' . $post_type, $post_type, $tag_taxonomy_args );
   }
 
 }
@@ -107,7 +107,7 @@ function add_custom_category_filter() {
   global $post_types; // 共通宣言
 
   if (in_array($post_type, $post_types)) {    // 投稿タイプが配列に含まれる場合に処理を行う
-    $taxonomy = 'category_' . $typenow;
+    $taxonomy = 'category-' . $typenow;
     wp_dropdown_categories(
       array(
         'show_option_all' => 'カテゴリー一覧', //すべてのカテゴリを表示するために表示するテキスト

@@ -15,7 +15,7 @@
                     $post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
                     foreach ( $post_types as $post_type ) {
                         $terms = get_terms( array(
-                            'taxonomy' => 'category_' . $post_type,
+                            'taxonomy' => 'category-' . $post_type,
                             'hide_empty' => false,
                         ) );
                         if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
@@ -25,7 +25,7 @@
                                     'posts_per_page' => 3,
                                     'tax_query' => array(
                                         array(
-                                            'taxonomy' => 'category_' . $post_type,
+                                            'taxonomy' => 'category-' . $post_type,
                                             'field' => 'slug',
                                             'terms' => $term->slug
                                         )
@@ -40,9 +40,7 @@
                                         </div>
                                         <div class="post-list">
                                             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                                                <article class="post-item">
-                                                    <?php echo get_template_part( '/assets/components/post_item' ); ?>
-                                                </article>
+                                                <?php echo get_template_part( '/assets/components/post_item' ); ?>
                                             <?php endwhile; ?>
                                         </div>
                                     </div>

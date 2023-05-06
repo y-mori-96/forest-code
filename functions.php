@@ -41,6 +41,7 @@ function add_files()
 get_template_part( '/assets/functions/create_custom_post' );
 get_template_part( '/assets/functions/delete_archive_title' );
 get_template_part( '/assets/functions/get_official_document_url');
+get_template_part( '/assets/functions/get_custom_taxonomies_terms_links');
 
 /**
  * テーマ設定
@@ -62,31 +63,4 @@ function theme_setup()
       'main-menu' => 'メインメニュー',
     )
   );
-}
-
-
-//（タクソノミーと）タームのリンクを取得する
-function custom_taxonomies_terms_links(){
-  // 現在の投稿オブジェクトを取得
-  $post = get_post();
-  $post_type = get_post_type();
-
-  // 投稿に付けられたタグを取得
-  $terms = get_the_terms( $post->ID, 'tag_' . $post_type );
-
-  $out = array();
-  if ( !empty( $terms ) ) {
-    // $out[] = "<h2>タグ</h2>\n<ul>";
-    $out[] = "<ul>";
-    foreach ( $terms as $term ) {
-      $out[] =
-        '  <li><a href="'
-      .    get_term_link( $term->slug, 'tag_' . $post_type ) .'">'
-      .    $term->name
-      . "</a></li>\n";
-    }
-    $out[] = "</ul>\n";
-  }
-
-  return implode('', $out );
 }
