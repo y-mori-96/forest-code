@@ -31,6 +31,7 @@ function add_files()
   wp_enqueue_style('main-style', get_stylesheet_uri());
   // JavaScriptファイル
   wp_enqueue_script('main-script', get_theme_file_uri() . '/assets/js/script.js', array(), '', true);
+  wp_enqueue_script('page-top-script', get_theme_file_uri() . '/assets/js/page_top.js', array(), '', true);
 
 }
 

@@ -39,3 +39,7 @@
         );
         ?>
     </nav>
+
+    <button id="page-top">
+        <img class="page-top-img" src="<?php echo esc_url(get_theme_file_uri('/assets/images/page-top.svg')); ?>" alt="上に戻る">
+    </button>

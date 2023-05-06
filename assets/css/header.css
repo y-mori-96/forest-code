@@ -80,8 +80,36 @@ HEADER
   width: 100%;
 }
 
+#page-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: .5rem;
+  background-color: var(--dark-green);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0; /* ボタンを最初は非表示にする */
+  transition: opacity .5s ease-in-out;
+  z-index: 1;
+  width: 60px;
+}
+
+#page-top:hover {
+  background-color: var(--green);
+}
+
+#page-top.show {
+  opacity: 1;
+}
+
+.page-top-img {
+  width: 100%;
+}
+
 /*
-MEDIUM SIZE
+MOBILE SIZE
 ================================================ */
 @media(min-width: 600px){
   /* HEADER */
@@ -128,4 +156,29 @@ MEDIUM SIZE
   .menu-wrapper a:hover {
       color: var(--green);
   }
+
+  #page-top {
+    width: 70px;
+}
+}
+
+/*
+TABLET SIZE
+================================================ */
+@media(min-width: 768px) {
+    #page-top {
+        padding: 1rem;
+        width: 80px;
+    }
+}
+/*
+PC SIZE
+================================================ */
+@media(min-width: 1280px) {
+    #page-top {
+        bottom: 2rem;
+        right: 2rem;
+        padding: 1rem;
+        width: 100px;
+    }
 }
