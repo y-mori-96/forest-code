@@ -94,6 +94,7 @@ HEADER
   transition: opacity .5s ease-in-out;
   z-index: 1;
   width: 60px;
+  box-shadow: var(--box-shadow);
 }
 
 #page-top:hover {
