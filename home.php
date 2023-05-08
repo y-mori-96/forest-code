@@ -12,7 +12,7 @@
             <main class="main-contents margin-auto">
                 <div class="wrapper">
                 <?php
-                    $post_types = array( 'development', 'design', 'frontend', 'backend', 'tool', 'essay' );
+                    global $post_types;
                     foreach ( $post_types as $post_type ) {
                         $terms = get_terms( array(
                             'taxonomy' => 'category-' . $post_type,
