@@ -109,6 +109,10 @@ HEADER
   width: 100%;
 }
 
+.bread-crumb {
+  margin-bottom: var(--margin-sm);
+}
+
 /*
 MOBILE SIZE
 ================================================ */
@@ -138,7 +142,7 @@ MOBILE SIZE
 
   /* Navigation */
   .primary-navigation {
-      margin-bottom: 2rem;
+      margin-bottom: var(--margin-sm);
   }
   .btn-menu {
       display: none;
@@ -160,7 +164,7 @@ MOBILE SIZE
 
   #page-top {
     width: 70px;
-}
+  }
 }
 
 /*

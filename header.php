@@ -27,6 +27,7 @@
             <p class="site-description"><?php bloginfo('description'); ?></p>
         </div>
     </header>
+
     <nav class="primary-navigation wrapper">
         <button class="btn-menu">メニュー</button>
         <?php
@@ -39,6 +40,14 @@
         );
         ?>
     </nav>
+
+    <?php if ( !is_home() ) : ?>
+        <?php if ( function_exists( 'bcn_display' ) ) : ?>
+            <nav class="bread-crumb wrapper" aria-label="現在のページ">
+                <?php bcn_display(); ?>
+            </nav>
+        <?php endif; ?>
+    <?php endif; ?>
 
     <button id="page-top">
         <img class="page-top-img" src="<?php echo esc_url(get_theme_file_uri('/assets/images/page-top.svg')); ?>" alt="上に戻る">
