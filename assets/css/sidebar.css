@@ -4,26 +4,21 @@ SIDEBER
 ================================================ */
 .sidebar-contents {
     height: auto;
+    display: none;
+}
+
+.sidebar-contents-wrapper {
     background-color: var(--white);
     padding: 1.25rem;
     box-shadow: var(--box-shadow);
     border-radius: var(--round-md);
-    display: none;
+    margin-bottom: var(--margin-sm);
 }
 
-.site-sidebar li.widget ul {
-    margin-left: 1.5em;
-}
-
-.site-sidebar li.widget ul li {
-    list-style-type: disc;
-    margin-bottom: 5px;
-}
-
-.site-sidebar li.widget .sidebar-post-lists {
+.sidebar-post-lists {
   margin-left: 0;
 }
-.site-sidebar li.widget ul .sidebar-post-list {
+.sidebar-post-list {
   margin-bottom: 10px;
   list-style: none;
 }
