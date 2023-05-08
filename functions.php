@@ -61,6 +61,7 @@ function theme_setup()
   register_nav_menus(
     array(
       'main-menu' => 'メインメニュー',
+      'footer-menu' => 'フッターメニュー',
     )
   );
 }

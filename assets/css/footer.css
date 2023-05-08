@@ -16,8 +16,26 @@ FOOTER
   color: rgba(255,255,255,.6)
 }
 
+/* Navigation */
+.primary-navigation {
+  margin-bottom: var(--margin-sm);
+}
+
+.footer-menu-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 1px solid var(--light-grey);
+  padding: 0 0 1rem;
+  text-align: center;
+}
+.footer-menu-wrapper a:hover {
+  text-decoration: underline;
+}
+
 /*
 MEDIUM SIZE
 ================================================ */
 @media(min-width: 600px){
+  /* Navigation */
 }
