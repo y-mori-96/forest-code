@@ -10,7 +10,7 @@
         <h2 class="post-title">
             <a href="<?php echo esc_url(get_permalink()); ?>"><?php the_title(); ?></a>
         </h2>
-        <time class="post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">公開日　　：<?php the_date(); ?><br>最終更新日：<?php the_modified_date(); ?></time>
+        <time class="post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">公開日　　：<?php the_time('Y-m-d'); ?><br>最終更新日：<?php the_modified_date('Y-m-d'); ?></time>
         <div class="post-tag-terms">
             <?php echo custom_taxonomies_terms_links(); ?>
         </div>
