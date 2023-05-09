@@ -16,7 +16,7 @@
                                 </h1>
                                 <!-- 公開日/更新日 -->
                                 <div class="single-post-date-wrapper">
-                                    <time class="single-post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">公開日：<?php the_date(); ?>　　最終更新日：<?php the_modified_date(); ?></time>
+                                    <?php echo get_template_part( '/assets/components/post_time_date' ); ?>
                                 </div>
                                 <!-- サムネイル -->
                                 <div class="post-thumbnail">

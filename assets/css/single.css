@@ -36,6 +36,11 @@ SINGLE / PAGE ARTICLE
     font-size: var(--font-md);
 }
 
+.single-post-date-contents {
+    display: flex;
+    flex-direction: column;
+}
+
 .single-post-header {
     margin-bottom: var(--margin-md);
 }

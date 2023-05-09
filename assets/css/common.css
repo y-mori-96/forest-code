@@ -114,6 +114,11 @@ LAYOUT
   align-items: center;
 }
 
+.flex-column-start-stretch {
+  display: flex;
+  flex-direction: column;
+}
+
 /*
 MAIN
 ================================================ */
