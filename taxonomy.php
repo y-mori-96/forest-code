@@ -9,7 +9,7 @@
 
     <div class="wrapper">
         <div class="grid">
-            <main class="main-contents">
+            <main class="main-contents margin-auto">
                 <?php if (get_official_document_url()): ?>
                     <article class="post-document">
                         <a href="<?php echo get_official_document_url(); ?>" target="_blank">
