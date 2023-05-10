@@ -31,7 +31,6 @@ HEADER
 }
 .site-logo {
   height: 40px;
-  margin-right: var(--margin-sm);
 }
 .site-description {
   color: var(--white);
@@ -135,6 +134,7 @@ MOBILE SIZE
 
   .site-logo {
       height: 100px;
+      margin-right: var(--margin-sm);
   }
   .site-description {
       font-size: var(--font-md);
